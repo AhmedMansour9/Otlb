@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="raaleat">RAALEAT</string>
+
+    <string name="signin">تسجيل دخول</string>
+    <string name="or">أو</string>
+    <string name="email">البريد الالكتروني</string>
+    <string name="password">الرقم السري</string>
+    <string name="forgetpass"> هل نسيت كلمة السر ؟</string>
+    <string name="createaccount">انشأ حساب</string>
+    <string name="fullname">الاسم كامل</string>
+    <string name="phone">رقم التليفون</string>
+    <string name="location">الموقع</string>
+    <string name="invalidemail">خطأ في البريد الالكتروني او كلمة السر </string>
+    <string name="insertemail">ادخل البريد الالكتروني </string>
+    <string name="insertpassword">ادخل الرقم السري </string>
+    <string name="firstname">الاسم الاول</string>
+    <string name="lastname">الاسم الاخير</string>
+    <string name="Phone">رقم التليفون</string>
+    <string name="insertfirstname">ادخل الاسم كامل</string>
+    <string name="insertphone">ادخل رقم الموبايل</string>
+    <string name="insertconfirmpassword">أدخل تأكيد الرقم السري</string>
+    <string name="Successfull">تم تسجيل الدخول بنجاح </string>
+    <string name="emailfailed">المستخدم موجود بالفعل</string>
+    <string name="internet">رجاء الاتصال بالانترنت</string>
+    <string name="facebook_app_id">588552121560489</string>
+    <string name="searchnow">ابحث الان</string>
+    <string name="seafood">مأكولات بحرية</string>
+</resources>

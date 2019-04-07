@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Otlb</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_navigation">Navigation</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="raaleat">RAALEAT</string>
+    <string name="signin">SIGN IN</string>
+    <string name="or">OR</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forgetpass">Forget Password ?</string>
+    <string name="createaccount">Create An Account</string>
+    <string name="fullname">Full Name</string>
+    <string name="phone">Phone</string>
+    <string name="location">Location</string>
+
+    <string name="internet">Turn on Internet</string>
+    <string name="invalidemail">Invalid Email Or password</string>
+    <string name="insertemail">please insert Mail</string>
+    <string name="insertpassword">please insert Password</string>
+    <string name="insertfirstname">please insert Full Name</string>
+    <string name="insertphone">please insert Phone</string>
+    <string name="Successfull">Registered Successfully</string>
+    <string name="emailfailed">Email is Used</string>
+    <string name="facebook_app_id">588552121560489</string>
+    <string name="searchnow">Search Now</string>
+    <string name="seafood">Sea Food</string>
+
+</resources>
