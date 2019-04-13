@@ -16,6 +16,7 @@ import com.fourhcode.forhutils.FUtilsValidation;
 import com.otlb.Model.UserRegister;
 import com.otlb.Presenter.Register_Presenter;
 import com.otlb.R;
+import com.otlb.TextDrawable;
 import com.otlb.View.RegisterView;
 
 /**
@@ -30,7 +31,8 @@ public class Register extends Fragment implements RegisterView {
 
     View view;
     Button Sign_Up;
-    EditText E_FirstName, E_LastName, E_Emai, E_Phone, E_Password, E_CarModel, E_CarYear;
+    EditText E_FirstName, E_LastName, E_Emai, E_Phone, E_Password, E_CarModel, E_CarYear,login_Address;
+    ;
     ProgressBar Progrossregister;
     //    NetworikConntection checkgbsAndNetwork;
     Register_Presenter register;
@@ -42,6 +44,8 @@ public class Register extends Fragment implements RegisterView {
         view = inflater.inflate(R.layout.fragment_register, container, false);
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE |
                 WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+//        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         register = new Register_Presenter(getContext(), this);
 
@@ -49,8 +53,12 @@ public class Register extends Fragment implements RegisterView {
         Progrossregister = view.findViewById(R.id.progressBarRegister);
         E_Emai = view.findViewById(R.id.login_email);
         E_Phone = view.findViewById(R.id.login_phone);
+        String code = "+966";
+        E_Phone.setCompoundDrawablesWithIntrinsicBounds(new TextDrawable(code), null, null, null);
+        E_Phone.setCompoundDrawablePadding(code.length()*10);
         E_Password = view.findViewById(R.id.login_password);
         Sign_Up = view.findViewById(R.id.btn_siginin);
+        login_Address=view.findViewById(R.id.login_Address);
 //        checkgbsAndNetwork = new NetworikConntection(getActivity());
 
         Sign_Up.setOnClickListener(new View.OnClickListener() {
@@ -68,15 +76,15 @@ public class Register extends Fragment implements RegisterView {
                         E_Password.setError("password min 8 char");
 
 
-                    if (!E_Emai.getText().toString().equals("") && !E_FirstName.getText().toString().equals("") && !E_LastName.getText().toString().equals("") && !E_Phone.getText().toString().equals("") &&
+                    if (!E_Emai.getText().toString().equals("") &&
+                            !E_FirstName.getText().toString().equals("") && !E_Phone.getText().toString().equals("") &&
                             (FUtilsValidation.isLengthCorrect(E_Password.getText().toString(), 8, 16))) {
                         UserRegister user = new UserRegister();
-
-
                         user.setEmail(E_Emai.getText().toString());
                         user.setFirstName(E_FirstName.getText().toString());
                         user.setPhone(E_Phone.getText().toString());
                         user.setPassword(E_Password.getText().toString());
+                        user.setAddress(login_Address.getText().toString());
 
                         Progrossregister.setVisibility(View.VISIBLE);
                         register.register(user);
@@ -103,8 +111,13 @@ public class Register extends Fragment implements RegisterView {
     }
 
     @Override
+    public void EmailisUsed() {
+        Toast.makeText(getActivity(), getResources().getString(R.string.emailfailed), Toast.LENGTH_SHORT).show();
+        Progrossregister.setVisibility(View.GONE);
+    }
+
+    @Override
     public void showError(String error) {
         Progrossregister.setVisibility(View.GONE);
-        Toast.makeText(getActivity(), getResources().getString(R.string.emailfailed), Toast.LENGTH_SHORT).show();
     }
 }

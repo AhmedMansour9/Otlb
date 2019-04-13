@@ -39,24 +39,15 @@ public class LoginPresenter {
             @Override
             public void onResponse(Call<UserLoginResponse> call, Response<UserLoginResponse> response) {
 
-                if (response.isSuccessful()) {
-
-
-                    if(response.body().getData().getMessage().equals("login success")){
-                        if(response.body().getData().getRoleId()!=null) {
-                            loginvieew.OpenRole(response.body().getData().getUserToken());
-
-                        }
-                        else {
-                            loginvieew.openMain(response.body().getData().getUserToken());
-                        }
-                    } else {
+                    if(response.code()==200){
+                        loginvieew.OpenRole(response.body().getAccessToken());
+                    } else if(response.code()==401){
                         loginvieew.Invalidemail("");
                     }
 
                 }
 
-            }
+
 
 
             @Override

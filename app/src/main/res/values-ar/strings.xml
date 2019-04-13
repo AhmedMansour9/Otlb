@@ -2,7 +2,6 @@
 <resources>
 
     <string name="raaleat">RAALEAT</string>
-
     <string name="signin">تسجيل دخول</string>
     <string name="or">أو</string>
     <string name="email">البريد الالكتروني</string>
@@ -16,15 +15,58 @@
     <string name="insertemail">ادخل البريد الالكتروني </string>
     <string name="insertpassword">ادخل الرقم السري </string>
     <string name="firstname">الاسم الاول</string>
-    <string name="lastname">الاسم الاخير</string>
     <string name="Phone">رقم التليفون</string>
     <string name="insertfirstname">ادخل الاسم كامل</string>
     <string name="insertphone">ادخل رقم الموبايل</string>
-    <string name="insertconfirmpassword">أدخل تأكيد الرقم السري</string>
     <string name="Successfull">تم تسجيل الدخول بنجاح </string>
     <string name="emailfailed">المستخدم موجود بالفعل</string>
     <string name="internet">رجاء الاتصال بالانترنت</string>
     <string name="facebook_app_id">588552121560489</string>
     <string name="searchnow">ابحث الان</string>
     <string name="seafood">مأكولات بحرية</string>
+    <string name="address">العنوان</string>
+    <string name="home">الصفحة الرئيسية</string>
+    <string name="offers">العروض</string>
+    <string name="notifications">اشعارات</string>
+    <string name="myorders">طلباتي</string>
+    <string name="wallet">المحفظة</string>
+    <string name="setting">الضبط</string>
+    <string name="aboutapp">عن التطبيق</string>
+    <string name="selectcity">ختار المدينة</string>
+    <string name="selectstate">اختار الحي</string>
+    <string name="selecttype">اختار نوع الاكل</string>
+    <string name="addtocart">اضف الي العربة</string>
+    <string name="addsucces">تم اضافة الي العربة بنجاح</string>
+    <string name="updatedcart">تم تحديث العربة بنجاح</string>
+    <string name="quantity">الكمية</string>
+    <string name="nomeals">لا يوجد وجبات لديك</string>
+    <string name="totalprice">السعر الكلي</string>
+    <string name="checkout">الدفع</string>
+    <string name="city">المدينة</string>
+    <string name="getlocation">الحصول على موقعي</string>
+    <string name="debit">بطاقة الخصم / الائتمان</string>
+    <string name="cash">نقدي</string>
+    <string name="oder">اطلب</string>
+
+    <string name="accountinfo">معلومات الحساب</string>
+    <string name="changepass">تغيير الرقم السري</string>
+    <string name="language">اللغة</string>
+    <string name="logout">تسجيل خروج</string>
+    <string name="save">حفظ</string>
+
+    <string name="confirmpass">تأكيد رقم السري</string>
+    <string name="english">English</string>
+    <string name="arabic">عربي</string>
+    <string name="insertAddress">من افضلك ادخل العنوان</string>
+    <string name="profileupdated">تم تحديث بيانات المستخدم بنجاح</string>
+    <string name="insertoldpas">ادخل الرقم السري القديم</string>
+    <string name="insertnewpas">ادخل الرقم السري الجديد</string>
+    <string name="passwordupdated">تم تحديث الرقم السري بنجاح</string>
+    <string name="wrongpass">ادخل الرقم السري صحيح </string>
+
+    <string name="confirmchangepassword">تأكيد تغيير الرقم السري</string>
+    <string name="askforchange">هل أنت متأكد من أنك تريد تغيير  الرقم السري الخاصة بك ؟</string>
+    <string name="yes">اوافق</string>
+    <string name="no">ارفض</string>
+
 </resources>

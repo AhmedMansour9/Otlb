@@ -2,7 +2,15 @@ package com.otlb.Model;
 
 public class UserRegister {
 
-    private String FirstName,LastName,Phone,Email,password,ConFirmpassword,Gender,id,carmodel,caryear,oldpassword,newpassword,user_token;
+    private String Address,FirstName,LastName,Phone,Email,password,ConFirmpassword,Gender,id,carmodel,caryear,oldpassword,newpassword,user_token;
+
+    public String getAddress() {
+        return Address;
+    }
+
+    public void setAddress(String address) {
+        Address = address;
+    }
 
     public String getUser_token() {
         return user_token;

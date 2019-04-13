@@ -7,7 +7,7 @@ public class RegisterResponse {
 
     @SerializedName("data")
     @Expose
-    private Register data;
+    private String data;
     @SerializedName("status")
     @Expose
     private Boolean status;
@@ -15,11 +15,11 @@ public class RegisterResponse {
     @Expose
     private String error;
 
-    public Register getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Register data) {
+    public void setData(String data) {
         this.data = data;
     }
 
@@ -38,5 +38,4 @@ public class RegisterResponse {
     public void setError(String error) {
         this.error = error;
     }
-
 }

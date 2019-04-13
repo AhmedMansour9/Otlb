@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Otlb</string>
+    <string name="app_name">RAALEAT</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -18,9 +18,8 @@
     <string name="forgetpass">Forget Password ?</string>
     <string name="createaccount">Create An Account</string>
     <string name="fullname">Full Name</string>
-    <string name="phone">Phone</string>
+    <string name="phone">Mobile Number</string>
     <string name="location">Location</string>
-
     <string name="internet">Turn on Internet</string>
     <string name="invalidemail">Invalid Email Or password</string>
     <string name="insertemail">please insert Mail</string>
@@ -30,7 +29,53 @@
     <string name="Successfull">Registered Successfully</string>
     <string name="emailfailed">Email is Used</string>
     <string name="facebook_app_id">588552121560489</string>
+    <string name="firstname">Full Name</string>
+    <string name="Phone">Mobile Number</string>
     <string name="searchnow">Search Now</string>
     <string name="seafood">Sea Food</string>
+    <string name="address">Address</string>
+    <string name="welcome">Welcome In Raaleat</string>
+    <string name="orderfood">Order Your Food Now</string>
+    <string name="home">Home</string>
+    <string name="offers">Offers</string>
+    <string name="notifications">Notifications</string>
+    <string name="myorders">My Orders</string>
+    <string name="wallet">Wallet</string>
+    <string name="setting">Setting</string>
+    <string name="aboutapp">About App</string>
+    <string name="selectcity">Select City</string>
+    <string name="selectstate">Select State</string>
+    <string name="selecttype">Select Type Food</string>
+    <string name="addtocart">Add To Cart</string>
+    <string name="addsucces">The Cart has been successfully added</string>
+    <string name="updatedcart">The Cart has been Updated successfully</string>
+    <string name="quantity">Quantity</string>
+    <string name="nomeals">No Meals Found For You</string>
+    <string name="totalprice">Total Price</string>
+    <string name="checkout">Check Out</string>
+    <string name="city">City</string>
+    <string name="getlocation">Get My Location</string>
+    <string name="debit">Debit/Credit Card</string>
+    <string name="cash">Cash</string>
+    <string name="oder">Order</string>
+    <string name="accountinfo">Account Info</string>
+    <string name="changepass">Change password</string>
+    <string name="language">Language</string>
+    <string name="logout">Log out</string>
+    <string name="save">Save</string>
+    <string name="confirmpass">ConFirm password</string>
+    <string name="english">English</string>
+    <string name="arabic">عربي</string>
+    <string name="insertAddress">Please Insert Address</string>
+    <string name="profileupdated">User Info Updated Success</string>
+
+    <string name="insertoldpas">Insert Old Password</string>
+    <string name="insertnewpas">Insert New password</string>
+    <string name="passwordupdated">Password Updated Succesfully</string>
+    <string name="wrongpass">Please Enter old password correct </string>
+    <string name="confirmchangepassword">Confirm Change Password...</string>
+    <string name="askforchange">Are you sure you want Change Your Password ?</string>
+    <string name="yes">Accept</string>
+    <string name="no">Refuse</string>
 
 </resources>

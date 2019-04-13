@@ -41,7 +41,7 @@ public class Registergoogle {
             public void onResponse(Call<UserLoginResponse> call, Response<UserLoginResponse> response) {
 
                 if (response.isSuccessful()) {
-                    logingooglevieew.openMainGoogle(response.body().getData().getUserToken());
+                    logingooglevieew.openMainGoogle(response.body().getAccessToken());
 
                 }
             }

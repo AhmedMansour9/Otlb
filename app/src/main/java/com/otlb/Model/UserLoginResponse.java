@@ -5,37 +5,36 @@ import com.google.gson.annotations.SerializedName;
 
 public class UserLoginResponse {
 
-    @SerializedName("data")
+    @SerializedName("access_token")
     @Expose
-    private UserLogin data;
-    @SerializedName("status")
+    private String accessToken;
+    @SerializedName("token_type")
     @Expose
-    private Boolean status;
-    @SerializedName("error")
+    private String tokenType;
+    @SerializedName("expires_at")
     @Expose
-    private String error;
+    private String expiresAt;
 
-    public UserLogin getData() {
-        return data;
+    public String getAccessToken() {
+        return accessToken;
     }
 
-    public void setData(UserLogin data) {
-        this.data = data;
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
     }
 
-    public Boolean getStatus() {
-        return status;
+    public String getTokenType() {
+        return tokenType;
     }
 
-    public void setStatus(Boolean status) {
-        this.status = status;
+    public void setTokenType(String tokenType) {
+        this.tokenType = tokenType;
     }
 
-    public String getError() {
-        return error;
+    public String getExpiresAt() {
+        return expiresAt;
     }
 
-    public void setError(String error) {
-        this.error = error;
-    }
-}
+    public void setExpiresAt(String expiresAt) {
+        this.expiresAt = expiresAt;
+    }}

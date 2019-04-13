@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -100,10 +101,9 @@ public class Login extends Fragment implements LoginView, RegisterFaceView, Regi
         view= inflater.inflate(R.layout.fragment_login, container, false);
         FirebaseApp.initializeApp(getContext());
          init();
-        GoogleSignOpition();
-        LoginGoogle();
-
-        LoginFac();
+//        GoogleSignOpition();
+//        LoginGoogle();
+//        LoginFac();
         Loginhome();
         Register();
 
@@ -128,8 +128,8 @@ public class Login extends Fragment implements LoginView, RegisterFaceView, Regi
 //                if(checknetwork.isNetworkAvailable(getBaseContext())) {
 //
 
-                    FUtilsValidation.isEmpty(E_Email, "please insert Mail");
-                    FUtilsValidation.isEmpty(E_Password, "please insert Password");
+                    FUtilsValidation.isEmpty(E_Email,getResources().getResourceName(R.string.insertemail));
+                    FUtilsValidation.isEmpty(E_Password, getResources().getResourceName(R.string.insertpassword));
 
                     if (!E_Email.getText().toString().equals("") && !E_Password.getText().toString().equals("")) {
                         UserRegister user = new UserRegister();
@@ -331,7 +331,6 @@ public class Login extends Fragment implements LoginView, RegisterFaceView, Regi
         Shared.apply();
         progressBar.setVisibility(View.GONE);
         Intent inty=new Intent(getContext(), Navigation.class);
-        inty.putExtra("username",email);
         startActivity(inty);
         getActivity().finish();
 
@@ -339,13 +338,11 @@ public class Login extends Fragment implements LoginView, RegisterFaceView, Regi
 
     @Override
     public void OpenRole(String usertoken) {
-        //        shareRole.putString("Role",role);
-//        shareRole.commit();
-//        Shared.putString("logggin",a);
-//        Shared.apply();
-//
-//        startActivity(new Intent(Login.this, Navigation.class));
-//        finish();
+        progressBar.setVisibility(View.GONE);
+        Shared.putString("logggin",usertoken);
+        Shared.apply();
+        startActivity(new Intent(getContext(), Navigation.class));
+        getActivity().finish();
 
     }
 
@@ -353,13 +350,12 @@ public class Login extends Fragment implements LoginView, RegisterFaceView, Regi
 
     @Override
     public void showError(String error) {
-//        Toast.makeText(this, ""+getResources().getString(R.string.invalidemail), Toast.LENGTH_SHORT).show();
         progressBar.setVisibility(View.GONE);
     }
 
     @Override
     public void Invalidemail(String password) {
-//        Toast.makeText(this, ""+getResources().getString(R.string.invalidemail), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), ""+getResources().getString(R.string.invalidemail), Toast.LENGTH_SHORT).show();
 
     }
 
@@ -396,7 +392,10 @@ public class Login extends Fragment implements LoginView, RegisterFaceView, Regi
     }
 
     public void init(){
-
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE |
+                WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+//        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         E_Email=view.findViewById(R.id.login_email);
         E_Password=view.findViewById(R.id.login_password);
         signin=view.findViewById(R.id.Btn_Sigin);

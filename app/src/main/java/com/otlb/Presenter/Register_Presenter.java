@@ -29,10 +29,13 @@ public class Register_Presenter {
         Map<String, String> queryMap = new HashMap<>();
         queryMap.put("api_token", "100");
         queryMap.put("firstName", user.getFirstName());
-        queryMap.put("lastName", user.getLastName());
+        queryMap.put("lastName","null");
         queryMap.put("password", user.getPassword());
         queryMap.put("email", user.getEmail());
         queryMap.put("phone", user.getPhone());
+        if(user.getAddress()!=null){
+        queryMap.put("address",user.getAddress());
+        }
 
         Apiinterface apiInterface = ApiCLint.getClient().create(Apiinterface.class);
         Call<RegisterResponse> call = apiInterface.register(queryMap);
@@ -40,14 +43,14 @@ public class Register_Presenter {
             @Override
             public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
 
-                if (response.isSuccessful()) {
+                if (response.code()==200) {
                     registerView.openMain();
-                } else {
+                } else if(response.code()==400){
+                    registerView.EmailisUsed();
+                }else {
                     registerView.showError("");
                 }
             }
-
-
             @Override
             public void onFailure(Call<RegisterResponse> call, Throwable t) {
                 registerView.showError("");

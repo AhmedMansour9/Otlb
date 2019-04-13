@@ -10,9 +10,15 @@
         android:layout_height="wrap_content">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
-    <ImageView
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_270sdp"
+                android:background="@drawable/bc" />
+
+
+            <ImageView
         android:layout_width="@dimen/_80sdp"
         android:layout_height="@dimen/_60sdp"
         android:layout_centerHorizontal="true"
@@ -167,7 +173,7 @@
                 android:text="@string/forgetpass"
                 android:textColor="#828282"
                 android:id="@+id/Forget_password"
-                android:layout_marginLeft="@dimen/_20sdp" />
+                android:layout_marginStart="@dimen/_20sdp" />
 
 
             <TextView
@@ -178,7 +184,7 @@
                 android:layout_alignParentEnd="true"
                 android:textColor="#ff984c"
                 android:id="@+id/Crate_Account"
-                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
                 />
 
 
