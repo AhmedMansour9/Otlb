@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_120sdp"
+        android:background="#ffffff"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:id="@+id/relative_row">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_22sdp"
+            android:text="@string/raleetocin"
+            android:textColor="#dd6c1a"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:textStyle="bold"
+            android:id="@+id/coin"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_22sdp"
+            android:text="100.00"
+            android:textColor="#dd6c1a"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textStyle="bold"
+            android:layout_below="@+id/coin"
+            android:id="@+id/Price"
+            />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

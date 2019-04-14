@@ -6,7 +6,10 @@ import com.otlb.Model.CartUpdate_Response;
 import com.otlb.Model.ChangePassword_Response;
 import com.otlb.Model.ChangeProfile_Response;
 import com.otlb.Model.Cities_Response;
+import com.otlb.Model.Details_Offers_Response;
 import com.otlb.Model.MenuDetails_Response;
+import com.otlb.Model.Offers_Response;
+import com.otlb.Model.Packages_Response;
 import com.otlb.Model.Profile_Response;
 import com.otlb.Model.RegisterFaceResponse;
 import com.otlb.Model.RegisterResponse;
@@ -41,6 +44,10 @@ public interface Apiinterface {
     @POST("getCity")
     Call<Cities_Response> GetCities(@QueryMap Map<String,String> queryMab);
 
+    @POST("getOffers")
+    Call<Details_Offers_Response> GetOffers(@QueryMap Map<String,String> queryMab);
+
+
     @POST("deleteFromCart")
     Call<CartResponse> DeleteCart(@QueryMap Map<String,String> queryMab);
 
@@ -54,9 +61,9 @@ public interface Apiinterface {
     @POST("getType")
     Call<TypesFoodResponse> GetTypes(@QueryMap Map<String,String> queryMab);
 
-
-    @POST("getType")
-    Call<CartResponse> ShowCart(@QueryMap Map<String,String> queryMab);
+    @Headers({ "Content-Type: application/json;charset=UTF-8"})
+    @POST("auth/myCart")
+    Call<CartResponse> ShowCart(@QueryMap Map<String,String> queryMab,@Header("Authorization") String auth);
 
     @POST("getState")
     Call<StatesResponse> GetStates(@QueryMap Map<String,String> queryMab);
@@ -67,10 +74,15 @@ public interface Apiinterface {
 
     @POST("getMenuDetails")
     Call<MenuDetails_Response> GetMenuDetails(@QueryMap Map<String,String> queryMab);
+    @POST("getPackage")
+    Call<Packages_Response> GetPackages(@QueryMap Map<String,String> queryMab);
 
 
     @POST("search")
     Call<Restaurants_Response> GetRestaurants(@QueryMap Map<String,String> queryMab);
+
+    @POST("getOffersRestaurant")
+    Call<Offers_Response> GetRestaurantsOffers(@QueryMap Map<String,String> queryMab);
 
     //    @POST("changeStatusOrders")
 //    Call<RegisterResponse> changestat(@QueryMap Map<String, String> queryMab);
@@ -89,6 +101,7 @@ public interface Apiinterface {
     @Headers({ "Content-Type: application/json;charset=UTF-8"})
     @POST("auth/updatePassword")
     Call<ChangePassword_Response> Changepass(@QueryMap Map<String, String> queryMab,@Header("Authorization") String auth);
+
 
     @Headers({ "Content-Type: application/json;charset=UTF-8"})
     @POST("auth/addCart")

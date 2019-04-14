@@ -6,10 +6,13 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +22,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.otlb.Activites.Navigation;
 import com.otlb.Adapter.Cart_Adapter;
 import com.otlb.Language;
 import com.otlb.Model.Cart;
+import com.otlb.Model.CartList;
 import com.otlb.Model.Cart_Details;
 import com.otlb.Presenter.AddToCart_Presenter;
 import com.otlb.Presenter.ShowCart_Presenter;
@@ -73,6 +78,7 @@ public class MyCart extends Fragment implements ShowCart_View,AddToCart_View , C
         showCart_presenter=new ShowCart_Presenter(getContext(),this);
         Shared=getActivity().getSharedPreferences("login",MODE_PRIVATE);
         init();
+        Navigation();
         Recyclview();
         SwipRefresh();
         RequestOrder();
@@ -80,6 +86,28 @@ public class MyCart extends Fragment implements ShowCart_View,AddToCart_View , C
 
         return view;
     }
+    public void Navigation(){
+        Toolbar toolbar =view.findViewById(R.id.toolbarrestaurants);
+
+        Navigation.toggle = new ActionBarDrawerToggle(
+                getActivity(), Navigation.drawer, toolbar,R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        Navigation.drawer.addDrawerListener(Navigation.toggle);
+        Navigation.toggle.syncState();
+        Navigation.toggle.setDrawerIndicatorEnabled(false);
+        toolbar.setNavigationIcon(R.drawable. navigation);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if (Navigation.drawer.isDrawerOpen(GravityCompat.START)) {
+                    Navigation.drawer.closeDrawer(GravityCompat.START);
+                } else {
+                    Navigation.drawer.openDrawer(GravityCompat.START);
+                }
+            }
+        });
+    }
+
     public void init(){
         listss=new ArrayList<>();
         cartframe=view.findViewById(R.id.cartframe);
@@ -148,7 +176,7 @@ public class MyCart extends Fragment implements ShowCart_View,AddToCart_View , C
     }
 
     @Override
-    public void ShowCart(List<Cart_Details> list) {
+    public void ShowCart(List<CartList> list) {
 //            id=String.valueOf(list.get(0).getId());
 //        listss=list;
         if(cart) {
@@ -173,10 +201,10 @@ public class MyCart extends Fragment implements ShowCart_View,AddToCart_View , C
 
     @Override
     public void ShowTotalprice(String price) {
-        Price = price;
-        T_Price.setText(price + "LE");
-        relatwo.setVisibility(View.VISIBLE);
-        mSwipeRefreshLayout.setRefreshing(false);
+//        Price = price;
+//        T_Price.setText(price + "LE");
+//        relatwo.setVisibility(View.VISIBLE);
+//        mSwipeRefreshLayout.setRefreshing(false);
 
     }
 
@@ -198,10 +226,10 @@ public class MyCart extends Fragment implements ShowCart_View,AddToCart_View , C
 
     @Override
     public void NoProduct() {
-        NoProducts.setVisibility(View.VISIBLE);
-        rel.setVisibility(View.GONE);
-        relatwo.setVisibility(View.GONE);
-        mSwipeRefreshLayout.setRefreshing(false);
+//        NoProducts.setVisibility(View.VISIBLE);
+//        rel.setVisibility(View.GONE);
+//        relatwo.setVisibility(View.GONE);
+//        mSwipeRefreshLayout.setRefreshing(false);
     }
 
     @Override
@@ -287,5 +315,16 @@ public class MyCart extends Fragment implements ShowCart_View,AddToCart_View , C
             }
         }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Navigation.Visablty=false;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        Navigation.Visablty=true;
+    }
 
 }

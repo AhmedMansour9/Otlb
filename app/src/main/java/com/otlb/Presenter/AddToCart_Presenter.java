@@ -35,8 +35,6 @@ public class AddToCart_Presenter {
         queryMap.put("qty",Quantity);
 
         Apiinterface apiInterface = ApiCLint.getClient().create(Apiinterface.class);
-
-
         Call<AddtoCart_Response> call = apiInterface.AddToCart(queryMap,"Bearer "+token);
         call.enqueue(new Callback<AddtoCart_Response>() {
             @Override
@@ -80,7 +78,7 @@ public class AddToCart_Presenter {
             public void onResponse(Call<CartResponse> call, Response<CartResponse> response) {
 
                 if (response.isSuccessful()) {
-                    addToCart_view.DeleteCart(response.body().getData().getCounter());
+//                    addToCart_view.DeleteCart(response.body().getData().g());
                 } else {
                     addToCart_view.Failed();
                 }

@@ -3,6 +3,7 @@ package com.otlb.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +32,7 @@ public class Register extends Fragment implements RegisterView {
 
     View view;
     Button Sign_Up;
-    EditText E_FirstName, E_LastName, E_Emai, E_Phone, E_Password, E_CarModel, E_CarYear,login_Address;
+    EditText E_FirstName, E_LastName, E_Emai, E_Phone, E_Password, E_CarModel, E_CarYear,login_Address,login_Confirmpassword;
     ;
     ProgressBar Progrossregister;
     //    NetworikConntection checkgbsAndNetwork;
@@ -53,6 +54,7 @@ public class Register extends Fragment implements RegisterView {
         Progrossregister = view.findViewById(R.id.progressBarRegister);
         E_Emai = view.findViewById(R.id.login_email);
         E_Phone = view.findViewById(R.id.login_phone);
+        login_Confirmpassword=view.findViewById(R.id.login_Confirmpassword);
         String code = "+966";
         E_Phone.setCompoundDrawablesWithIntrinsicBounds(new TextDrawable(code), null, null, null);
         E_Phone.setCompoundDrawablePadding(code.length()*10);
@@ -72,10 +74,20 @@ public class Register extends Fragment implements RegisterView {
 
                     FUtilsValidation.isLengthCorrect(E_Password.getText().toString(), 8, 16);
 
-                    if (!FUtilsValidation.isLengthCorrect(E_Password.getText().toString(), 8, 16))
-                        E_Password.setError("password min 8 char");
-
-
+                    if (!FUtilsValidation.isLengthCorrect(E_Password.getText().toString(), 8, 16)) {
+                        E_Password.setError(getResources()
+                                .getString(R.string.minpas));
+                    }
+                    else if (!FUtilsValidation.isLengthCorrect(login_Confirmpassword.getText().toString(), 8, 16)){
+                        Toast.makeText(getActivity(), getResources()
+                                .getString(R.string.minpas), Toast.LENGTH_SHORT).show();
+                        login_Confirmpassword.setError(getResources()
+                                .getString(R.string.minpas));
+                    }
+                if (!E_Password.getText().toString().equals(login_Confirmpassword.getText().toString())) {
+                    Toast.makeText(getActivity(), getResources().getString(R.string.notmatch),
+                            Toast.LENGTH_SHORT).show();
+                }else if(ValidateEmail()) {
                     if (!E_Emai.getText().toString().equals("") &&
                             !E_FirstName.getText().toString().equals("") && !E_Phone.getText().toString().equals("") &&
                             (FUtilsValidation.isLengthCorrect(E_Password.getText().toString(), 8, 16))) {
@@ -89,6 +101,7 @@ public class Register extends Fragment implements RegisterView {
                         Progrossregister.setVisibility(View.VISIBLE);
                         register.register(user);
                     }
+                }
 //                }
 //                else {
 //                    Toast.makeText(getActivity(), getResources().getString(R.string.internet), Toast.LENGTH_LONG).show();
@@ -109,7 +122,21 @@ public class Register extends Fragment implements RegisterView {
         Progrossregister.setVisibility(View.GONE);
         getFragmentManager().beginTransaction().replace(R.id.flContent, new Login()).commit();
     }
+    private Boolean ValidateEmail(){
+        String EMAIL=E_Emai.getText().toString().trim();
+        if (EMAIL.isEmpty()||!isValidEmail(EMAIL)){
+//            Toast.makeText(getContext(), ""+getResources().getString(R.string.insertemail), Toast.LENGTH_SHORT).show();
 
+            return false;
+        }else if(!E_Emai.getText().toString().matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+")){
+//            Toast.makeText(getContext(), ""+getResources().getString(R.string.insertemail), Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+    private static boolean isValidEmail(String email) {
+        return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
     @Override
     public void EmailisUsed() {
         Toast.makeText(getActivity(), getResources().getString(R.string.emailfailed), Toast.LENGTH_SHORT).show();

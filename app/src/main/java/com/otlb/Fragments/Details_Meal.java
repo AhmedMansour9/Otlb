@@ -1,6 +1,7 @@
 package com.otlb.Fragments;
 
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -90,34 +91,72 @@ public class Details_Meal extends Fragment implements AddToCart_View {
             T_Name.setText(Name);
             T_Price.setText(Pricee);
         }
-        Glide.with(getContext())
-                .load("http://raaleat.com/site/"+ Image)
-                .apply(new RequestOptions().override(500, 500))
-                .listener(new RequestListener<Drawable>() {
-                    @Override
-                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                        return false;
-                    }
-                    @Override
-                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                        return false;
-                    }
-                })
-                .into(img);
-        Glide.with(getContext())
-                .load("http://raaleat.com/site/"+ img_meal)
-                .apply(new RequestOptions().override(500, 500))
-                .listener(new RequestListener<Drawable>() {
-                    @Override
-                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                        return false;
-                    }
-                    @Override
-                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                        return false;
-                    }
-                })
-                .into(Img_Meal);
+       if(Image.toLowerCase().contains("http://raaleat.com/site/")) {
+           Glide.with(getContext())
+                   .load( Image)
+                   .apply(new RequestOptions().override(500, 500))
+                   .listener(new RequestListener<Drawable>() {
+                       @Override
+                       public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                           return false;
+                       }
+
+                       @Override
+                       public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                           return false;
+                       }
+                   })
+                   .into(img);
+       }else {
+           Glide.with(getContext())
+                   .load("http://raaleat.com/site/"+Image)
+                   .apply(new RequestOptions().override(500, 500))
+                   .listener(new RequestListener<Drawable>() {
+                       @Override
+                       public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                           return false;
+                       }
+
+                       @Override
+                       public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                           return false;
+                       }
+                   })
+                   .into(img);
+       }
+      if(img_meal.toLowerCase().contains("http://raaleat.com/site/")) {
+          Glide.with(getContext())
+                  .load(img_meal)
+                  .apply(new RequestOptions().override(500, 500))
+                  .listener(new RequestListener<Drawable>() {
+                      @Override
+                      public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                          return false;
+                      }
+
+                      @Override
+                      public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                          return false;
+                      }
+                  })
+                  .into(Img_Meal);
+      }else {
+          Glide.with(getContext())
+                  .load("http://raaleat.com/site/" + img_meal)
+                  .apply(new RequestOptions().override(500, 500))
+                  .listener(new RequestListener<Drawable>() {
+                      @Override
+                      public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                          return false;
+                      }
+
+                      @Override
+                      public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                          return false;
+                      }
+                  })
+                  .into(Img_Meal);
+      }
     }
     public void Plus(){
         plus.setOnClickListener(new View.OnClickListener() {
@@ -238,6 +277,17 @@ public class Details_Meal extends Fragment implements AddToCart_View {
                 }
             }
         });
+    }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Navigation.Visablty=false;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        Navigation.Visablty=true;
     }
 
 }

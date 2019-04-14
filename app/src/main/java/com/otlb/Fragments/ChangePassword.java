@@ -1,6 +1,7 @@
 package com.otlb.Fragments;
 
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -154,6 +155,18 @@ public class ChangePassword extends Fragment implements Change_Profile_View {
     @Override
     public void showError() {
         ProgrossPassword.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Navigation.Visablty=false;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        Navigation.Visablty=true;
     }
 }
 

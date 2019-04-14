@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -27,15 +29,14 @@ import com.otlb.View.RestaurantDetails_View;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Restaurants_Adapter extends RecyclerView.Adapter<Restaurants_Adapter.MyViewHolder>{
+public class Restaurants_Adapter extends RecyclerView.Adapter<Restaurants_Adapter.MyViewHolder>implements Filterable {
 
     private List<Restaurants> filteredList=new ArrayList<>();
     View itemView;
     Context con;
     RestaurantDetails_View restaurantDetails_view;
-//    phone_view phoneView;
-    String Price;
-//    ListUnitDetails_View listUnitDetails_view;
+    private List<Restaurants> mArrayList;
+    public static List<Restaurants> filtered = new ArrayList<>();
     List<Restaurants> list=new ArrayList<>();
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -57,6 +58,7 @@ public class Restaurants_Adapter extends RecyclerView.Adapter<Restaurants_Adapte
     public Restaurants_Adapter(List<Restaurants> list, Context context){
         this.filteredList=list;
         this.con=context;
+        mArrayList=list;
     }
 //    public Restaurants_Adapter(List<Units_Detail> list){
 //        this.filteredList=list;
@@ -125,6 +127,34 @@ public class Restaurants_Adapter extends RecyclerView.Adapter<Restaurants_Adapte
     public int getItemViewType(int position) {
         return position;
     }
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
 
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                filtered.clear();
+                String charString = charSequence.toString();
+                if (charString.isEmpty()) {
+                    filteredList = mArrayList;
+                } else {
+                    for (Restaurants androidVersion : mArrayList) {
+                        if (androidVersion.getName().toLowerCase().contains(charString)) {
+                            filtered.add(androidVersion);}}
+                    filteredList = filtered;}
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = filteredList;
+                return filterResults;
+            }
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                filteredList = (List<Restaurants>) filterResults.values;
+
+                notifyDataSetChanged();
+            }
+        };
+
+    }
 }
+
 

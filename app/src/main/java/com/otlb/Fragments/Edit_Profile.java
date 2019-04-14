@@ -1,6 +1,7 @@
 package com.otlb.Fragments;
 
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -151,5 +152,16 @@ public class Edit_Profile extends Fragment implements GetProfile_View , Change_P
                 }
             }
         });
+    }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Navigation.Visablty=false;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        Navigation.Visablty=true;
     }
 }

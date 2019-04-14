@@ -88,7 +88,6 @@
                             android:textColor="#000"
                             android:maxLength="13"
                             android:ems="10">
-                            <requestFocus />
 
                         </EditText>
                     </android.support.design.widget.TextInputLayout>

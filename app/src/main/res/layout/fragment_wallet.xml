@@ -1,10 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bc_splash"
+    android:background="#fff7ea"
+    android:id="@+id/Rela_Wallet"
     tools:context=".Fragments.Wallet">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarrestaurants"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#d27520">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_50sdp"
+                android:text="@string/wallet"
+                android:textColor="#ffffff"
+                android:id="@+id/Name"
+                android:textSize="@dimen/_16sdp"
+                />
 
-</FrameLayout>
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="@dimen/_120sdp"
+       android:background="#ffffff"
+       android:id="@+id/relaa"
+       android:layout_marginRight="@dimen/_30sdp"
+       android:layout_marginLeft="@dimen/_30sdp"
+       android:layout_marginTop="@dimen/_60sdp">
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="@dimen/_22sdp"
+           android:text="@string/raleetocin"
+           android:textColor="#dd6c1a"
+           android:layout_centerHorizontal="true"
+           android:layout_marginTop="@dimen/_20sdp"
+           android:textStyle="bold"
+           android:id="@+id/coin"
+           />
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="@dimen/_22sdp"
+           android:text="100.00"
+           android:textColor="#dd6c1a"
+           android:layout_centerHorizontal="true"
+           android:layout_marginTop="@dimen/_10sdp"
+           android:textStyle="bold"
+           android:layout_below="@+id/coin"
+           />
+
+
+   </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_18sdp"
+        android:text="@string/welcomeinwallet"
+        android:textColor="#dd6c1a"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:textStyle="bold"
+        android:layout_below="@+id/relaa"
+        android:id="@+id/welcome"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_18sdp"
+        android:text="@string/savemoney"
+        android:textColor="#dd6c1a"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:textStyle="bold"
+        android:layout_below="@+id/welcome"
+        android:id="@+id/savemoney"
+        />
+
+    <ImageView
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_80sdp"
+        android:layout_below="@+id/savemoney"
+        android:src="@drawable/addpackge"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_20sdp"
+       android:id="@+id/img_addpackge"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_18sdp"
+        android:text="@string/addmoney"
+        android:textColor="#dd6c1a"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:textStyle="bold"
+        android:layout_below="@+id/img_addpackge"
+        android:id="@+id/addmoney"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:id="@+id/Rela_language"
+        android:layout_below="@+id/addmoney"
+        android:layout_height="@dimen/_40sdp">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:background="#e4e4e4"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:textColor="#d27520"
+            android:text="@string/payforrestaurant"
+            />
+        <ImageView
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:src="@drawable/arrow"
+            android:id="@+id/arrow_packages"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/_20sdp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_alignParentBottom="true"
+            android:background="#e4e4e4"
+            />
+
+
+    </RelativeLayout>
+</RelativeLayout>

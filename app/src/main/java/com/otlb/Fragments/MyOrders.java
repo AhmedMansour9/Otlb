@@ -1,12 +1,14 @@
 package com.otlb.Fragments;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.otlb.Activites.Navigation;
 import com.otlb.R;
 
 /**
@@ -26,5 +28,15 @@ public class MyOrders extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_my_orders, container, false);
     }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Navigation.Visablty=true;
+    }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        Navigation.Visablty=false;
+    }
 }

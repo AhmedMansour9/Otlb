@@ -7,62 +7,71 @@ import java.util.List;
 
 public class CartList {
 
-    @SerializedName("message")
+    @SerializedName("cartId")
     @Expose
-    private String message;
-    @SerializedName("cart")
+    private String cartId;
+    @SerializedName("mealName")
     @Expose
-    private List<Cart_Details> cart = null;
-    @SerializedName("count_carts")
+    private String mealName;
+    @SerializedName("mealPrice")
     @Expose
-    private String countCarts;
-    @SerializedName("total_carts")
+    private String mealPrice;
+    @SerializedName("mealImage")
     @Expose
-    private String totalCarts;
-
-    @SerializedName("counter")
+    private String mealImage;
+    @SerializedName("qty")
     @Expose
-    private String counter;
+    private String qty;
+    @SerializedName("totalPrice")
+    @Expose
+    private Integer totalPrice;
 
-
-
-    public String getMessage() {
-        return message;
+    public String getCartId() {
+        return cartId;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setCartId(String cartId) {
+        this.cartId = cartId;
     }
 
-    public List<Cart_Details> getCart() {
-        return cart;
+    public String getMealName() {
+        return mealName;
     }
 
-    public void setCart(List<Cart_Details> cart) {
-        this.cart = cart;
-    }
-    public String getCountCarts() {
-        return countCarts;
+    public void setMealName(String mealName) {
+        this.mealName = mealName;
     }
 
-    public void setCountCarts(String countCarts) {
-        this.countCarts = countCarts;
+    public String getMealPrice() {
+        return mealPrice;
     }
 
-    public String getTotalCarts() {
-        return totalCarts;
+    public void setMealPrice(String mealPrice) {
+        this.mealPrice = mealPrice;
     }
 
-    public void setTotalCarts(String totalCarts) {
-        this.totalCarts = totalCarts;
+    public String getMealImage() {
+        return mealImage;
     }
 
-    public String getCounter() {
-        return counter;
+    public void setMealImage(String mealImage) {
+        this.mealImage = mealImage;
     }
 
-    public void setCounter(String counter) {
-        this.counter = counter;
+    public String getQty() {
+        return qty;
+    }
+
+    public void setQty(String qty) {
+        this.qty = qty;
+    }
+
+    public Integer getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Integer totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
 }

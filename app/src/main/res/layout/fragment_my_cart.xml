@@ -4,9 +4,32 @@
     android:layout_height="match_parent"
     android:id="@+id/cartframe"
     android:background="#fff7ea">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarrestaurants"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#d27520">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_50sdp"
+                android:text="@string/mycart"
+                android:textColor="#ffffff"
+                android:id="@+id/Name"
+                android:textSize="@dimen/_16sdp"
+                />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
         android:layout_height="match_parent">
         <TextView
             android:layout_width="wrap_content"
@@ -35,6 +58,7 @@
             android:layout_width="match_parent"
             android:layout_alignParentBottom="true"
             android:background="#fff"
+            android:visibility="gone"
             android:id="@+id/relatwo"
             android:layout_height="@dimen/_100sdp">
         <TextView

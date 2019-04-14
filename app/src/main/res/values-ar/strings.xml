@@ -68,5 +68,31 @@
     <string name="askforchange">هل أنت متأكد من أنك تريد تغيير  الرقم السري الخاصة بك ؟</string>
     <string name="yes">اوافق</string>
     <string name="no">ارفض</string>
+    <string name="filter">ترتيب</string>
+    <string name="search">ابحث</string>
+    <string name="filterby">ترتيب حسب</string>
+    <string name="recomened">موصى به</string>
+    <string name="rating">تقييم</string>
+    <string name="minorder">الحد الأدنى للطلب</string>
+    <string name="atoz">أ الي ي</string>
+    <string name="welcomeinwallet">مرحب بك في المحفظة</string>
+    <string name="savemoney">توفير المال في المحفظة للطلب</string>
+    <string name="addmoney">اضف النقود الي المحفظة</string>
+    <string name="payforrestaurant">Pay For Raaleat Restaurant</string>
+    <string name="chooseyourpackge">اختيار الحزمة الخاصة بك</string>
+    <string name="coins">نقط</string>
+    <string name="sar">ريال</string>
+    <string name="youcanpay">يمكنك أن تدفع للمطاعم الخاصة بنا في التطبيق </string>
+    <string name="amountofprice">أدخل كمية النقاط</string>
+    <string name="enteryouremail">ادخل البريد الالكتروني لصديقك</string>
+    <string name="share">شارك</string>
+    <string name="pay">ادفع</string>
+    <string name="mycart">السلة</string>
+    <string name="signup">انشاء حساب</string>
+    <string name="minpas">الرقم السري يجب اي يكون علي الاقل 8 حروف</string>
+    <string name="notmatch">الرقم السري لا يتطابق</string>
+    <string name="confirrmpas">تأكيدالرقم السري </string>
+    <string name="datefrom">من</string>
+    <string name="dateto">الي</string>
 
 </resources>

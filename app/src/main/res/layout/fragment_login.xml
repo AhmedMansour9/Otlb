@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bc_splash"
     tools:context=".Fragments.Login">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -140,6 +141,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingRight="@dimen/_10sdp"
+                    android:backgroundTint="#c2c2c2"
                     android:inputType="textEmailAddress"
                     android:textColor="#000"
                     />
@@ -153,6 +155,7 @@
                 android:layout_marginRight="@dimen/_13sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:hint="@string/password"
+                app:passwordToggleEnabled="true"
                 android:layout_below="@+id/login_text_email_input_layout">
 
 
@@ -163,6 +166,7 @@
                     android:paddingRight="@dimen/_10sdp"
                     android:inputType="textPassword"
                     android:textColor="#000"
+                    android:backgroundTint="#c2c2c2"
                     />
             </android.support.design.widget.TextInputLayout>
 

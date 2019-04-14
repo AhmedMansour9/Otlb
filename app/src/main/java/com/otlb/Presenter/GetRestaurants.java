@@ -3,6 +3,7 @@ package com.otlb.Presenter;
 import android.content.Context;
 
 import com.otlb.Model.Cities_Response;
+import com.otlb.Model.Offers_Response;
 import com.otlb.Model.Restaurants_Response;
 import com.otlb.Retrofit.ApiCLint;
 import com.otlb.Retrofit.Apiinterface;
@@ -48,6 +49,30 @@ public class GetRestaurants {
 
             @Override
             public void onFailure(Call<Restaurants_Response> call, Throwable t) {
+                getCities_view.Error();
+
+            }
+        });
+    }
+    public void GetRestaurantsOffers(String lang) {
+        Map<String, String> queryMap = new HashMap<>();
+        queryMap.put("lang", lang);
+        Apiinterface apiInterface = ApiCLint.getClient().create(Apiinterface.class);
+        Call<Offers_Response> call = apiInterface.GetRestaurantsOffers(queryMap);
+        call.enqueue(new Callback<Offers_Response>() {
+            @Override
+            public void onResponse(Call<Offers_Response> call, Response<Offers_Response> response) {
+
+                if (response.isSuccessful()) {
+                    getCities_view.listRestaurantsOffers(response.body().getData());
+                } else {
+                    getCities_view.Error();
+                }
+            }
+
+
+            @Override
+            public void onFailure(Call<Offers_Response> call, Throwable t) {
                 getCities_view.Error();
 
             }

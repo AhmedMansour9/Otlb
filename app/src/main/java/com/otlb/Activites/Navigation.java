@@ -43,7 +43,6 @@ public class Navigation extends AppCompatActivity
     SharedPreferences shared;
     NavigationView navigationView;
     SharedPreferences.Editor share;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,49 +83,67 @@ public class Navigation extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if (Visablty == true) {
+
+                if (fr instanceof Offers) {
+                    BackToHome();
+
+                } else if (fr instanceof Notifications) {
+                    BackToHome();
+
+                } else if (fr instanceof Wallet) {
+                    BackToHome();
+
+                } else if (fr instanceof Setting) {
+                    BackToHome();
+
+                } else {
+                    super.onBackPressed();
+                }
+            } else {
+                super.onBackPressed();
+            }
         }
-    }
+
+        }
 
 
+        @SuppressWarnings("StatementWithEmptyBody")
+        @Override
+        public boolean onNavigationItemSelected (MenuItem item){
+            switch (item.getItemId()) {
+                case R.id.home:
+                    mCurrentSelectedPosition = 0;
 
+                    fr = new Home();
+                    break;
+                case R.id.offers:
+                    mCurrentSelectedPosition = 1;
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-        case R.id.home:
-        mCurrentSelectedPosition = 0;
+                    fr = new Offers();
 
-        fr = new Home();
-        break;
-         case R.id.offers:
-        mCurrentSelectedPosition = 1;
+                    break;
+                case R.id.notifications:
+                    mCurrentSelectedPosition = 2;
 
-        fr = new Offers();
+                    fr = new Notifications();
+                    break;
 
-        break;
-            case R.id.notifications:
-                mCurrentSelectedPosition = 2;
+                case R.id.myorders:
+                    mCurrentSelectedPosition = 3;
 
-                fr = new Notifications();
-               break;
+                    fr = new MyOrders();
+                    break;
+                case R.id.wallet:
+                    mCurrentSelectedPosition = 4;
 
-            case R.id.myorders:
-                mCurrentSelectedPosition = 3;
+                    fr = new Wallet();
+                    break;
+                case R.id.setting:
+                    mCurrentSelectedPosition = 4;
 
-                fr = new MyOrders();
-                break;
-            case R.id.wallet:
-                mCurrentSelectedPosition = 4;
-
-                fr = new Wallet();
-                break;
-            case R.id.setting:
-                mCurrentSelectedPosition = 4;
-
-                fr = new Setting();
-                break;
+                    fr = new Setting();
+                    break;
 //        case R.id.signout:
 //        mCurrentSelectedPosition = 7;
 //        Sha.putString("logggin",null);
@@ -135,27 +152,39 @@ public class Navigation extends AppCompatActivity
 //        finish();
 
 
+                default:
+                    mCurrentSelectedPosition = 0;
 
-        default:
-        mCurrentSelectedPosition = 0;
-
-    }
-        if (item.isChecked()) {
-        item.setChecked(false);
-    } else {
-        item.setChecked(true);
-    }
-        item.setChecked(true);
+            }
+            if (item.isChecked()) {
+                item.setChecked(false);
+            } else {
+                item.setChecked(true);
+            }
+            item.setChecked(true);
 
 
-    fragmentManager=getSupportFragmentManager();
-    android.support.v4.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.flContentss,fr);
-        transaction.commit();
+            fragmentManager = getSupportFragmentManager();
+            android.support.v4.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.replace(R.id.flContentss, fr);
+            transaction.commit();
 
-    DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
+            DrawerLayout drawer = findViewById(R.id.drawer_layout);
+            drawer.closeDrawer(GravityCompat.START);
+            return true;
+
+        }
+
+    private void BackToHome()
+    {
+
+        fr = new Home();
+        if(fr !=null)
+        {
+            navigationView.getMenu().getItem(0).setChecked(true);
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.flContentss,fr).commit();
+        }
 
     }
 }

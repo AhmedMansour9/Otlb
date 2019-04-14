@@ -1,6 +1,7 @@
 package com.otlb.Fragments;
 
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -117,20 +118,38 @@ public class Menus extends Fragment implements AddToCart_View,RestaurantDetails_
             Name=bundle.getString("name");
             T_Name.setText(Name);
         }
-        Glide.with(getContext())
-                .load("http://raaleat.com/site/"+ Image)
-                .apply(new RequestOptions().override(500, 500))
-                .listener(new RequestListener<Drawable>() {
-                    @Override
-                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                        return false;
-                    }
-                    @Override
-                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                        return false;
-                    }
-                })
-                .into(img);
+        if(Image.toLowerCase().contains("http://raaleat.com/site/")){
+            Glide.with(getContext())
+                    .load( Image)
+                    .apply(new RequestOptions().override(500, 500))
+                    .listener(new RequestListener<Drawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                            return false;
+                        }
+                        @Override
+                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                            return false;
+                        }
+                    })
+                    .into(img);
+
+        }else {
+            Glide.with(getContext())
+                    .load("http://raaleat.com/site/"+ Image)
+                    .apply(new RequestOptions().override(500, 500))
+                    .listener(new RequestListener<Drawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                            return false;
+                        }
+                        @Override
+                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                            return false;
+                        }
+                    })
+                    .into(img);
+        }
 
     }
 
@@ -295,5 +314,16 @@ public class Menus extends Fragment implements AddToCart_View,RestaurantDetails_
         String logi=sha.getString("logggin",null);
 
         return logi;
+    }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Navigation.Visablty=false;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        Navigation.Visablty=true;
     }
 }

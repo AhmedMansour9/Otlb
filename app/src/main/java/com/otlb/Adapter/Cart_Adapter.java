@@ -14,7 +14,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
 import com.otlb.Model.Cart;
+import com.otlb.Model.CartList;
 import com.otlb.Model.Cart_Details;
 import com.otlb.R;
 import com.otlb.View.Count_View;
@@ -26,7 +33,7 @@ public class Cart_Adapter extends RecyclerView.Adapter<Cart_Adapter.MyViewHolder
 
 
 
-public static List<Cart_Details> filteredList=new ArrayList<>();
+public static List<CartList> filteredList=new ArrayList<>();
         SharedPreferences.Editor share;
 public static String TotalPrice;
         View itemView;
@@ -55,7 +62,7 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
 
 }
 
-    public Cart_Adapter(List<Cart_Details> phon, Context context){
+    public Cart_Adapter(List<CartList> phon, Context context){
         filteredList=phon;
         this.con=context;
     }
@@ -73,80 +80,71 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
     @Override
     public void onBindViewHolder(final Cart_Adapter.MyViewHolder holder, final int position) {
 
-//        holder.T_Name.setText(filteredList.get(position).getProductsName());
-//        holder.T_Price.setText(filteredList.get(position).getFinalPrice());
-//        holder.counter.setText(filteredList.get(position).getCustomersBasketQuantity());
-//
-//        holder.plus.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                int countity=Integer.parseInt(filteredList.get(position).getProductsQuantity());
-//                int count=Integer.parseInt(holder.counter.getText().toString());
-//                if(count<countity) {
-//                    count++;
-//                    holder.counter.setText(count + "");
-//                    count_view.count_plus(String.valueOf(filteredList.get(position).getCustomersBasketId()));
-//                }else {
-//                    Toast.makeText(con,con.getResources().getString(R.string.nomorestock), Toast.LENGTH_SHORT).show();
-//
-//                }
-//            }
-//        });
-//
-//        holder.minus.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                int count=Integer.parseInt(holder.counter.getText().toString());
-//                if(count>1) {
-//                    count--;
-//                    holder.counter.setText(count + "");
-//                    count_view.count_minus(String.valueOf(filteredList.get(position).getCustomersBasketId()));
-//                }
-//            }
-//        });
-//
-//        String i = filteredList.get(position).getImage();
-//        Uri u = Uri.parse(i);
-//        holder.progressBar.setVisibility(View.VISIBLE);
-//
-//        Glide.with(con)
-//                .load("http://jak-go.com/"+u)
-//                .apply(new RequestOptions().override(500,500))
-//
-//                .listener(new RequestListener<Drawable>() {
-//                    @Override
-//                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-//                        holder.progressBar.setVisibility(View.GONE);
-//                        return false; // important to return false so the error placeholder can be placed
-//                    }
-//
-//                    @Override
-//                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-//                        holder.progressBar.setVisibility(View.GONE);
-//
-//                        return false;
-//                    }
-//                })
-//                .into(holder.Image_product);
+        holder.T_Name.setText(filteredList.get(position).getMealName());
+        holder.T_Price.setText(filteredList.get(position).getMealPrice());
+        holder.counter.setText(filteredList.get(position).getQty());
 
-//        Typeface typeface = Typeface.createFromAsset(con.getAssets(), "fonts/no.otf");
-//        holder.T_Name.setTypeface(typeface);
-//        holder.T_Model.setTypeface(typeface);
-//        holder.T_Discrption.setTypeface(typeface);
-//        holder.T_Price.setTypeface(typeface);
+        holder.plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int countity=Integer.parseInt(filteredList.get(position).getQty());
+                int count=Integer.parseInt(holder.counter.getText().toString());
+
+                    count++;
+                    holder.counter.setText(count + "");
+                    count_view.count_plus(String.valueOf(filteredList.get(position).getQty()));
+
+            }
+        });
+
+        holder.minus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                int count=Integer.parseInt(holder.counter.getText().toString());
+                if(count>1) {
+                    count--;
+                    holder.counter.setText(count + "");
+                    count_view.count_minus(String.valueOf(filteredList.get(position).getQty()));
+                }
+            }
+        });
+
+        String i = filteredList.get(position).getMealImage();
+        Uri u = Uri.parse(i);
+        holder.progressBar.setVisibility(View.VISIBLE);
+
+        Glide.with(con)
+                .load("http://raaleat.com/site/"+u)
+                .apply(new RequestOptions().override(500,500))
+
+                .listener(new RequestListener<Drawable>() {
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                        holder.progressBar.setVisibility(View.GONE);
+                        return false; // important to return false so the error placeholder can be placed
+                    }
+
+                    @Override
+                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                        holder.progressBar.setVisibility(View.GONE);
+
+                        return false;
+                    }
+                })
+                .into(holder.Image_product);
 
 
-//        holder.delete.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if(filteredList.get(position).getCustomersBasketId()!=null) {
-//                    count_view.delete(String.valueOf(filteredList.get(position).getCustomersBasketId()),
-//                            String.valueOf(position));
-//                    filteredList.remove(position);
-//                }
-//            }
-//        });
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(filteredList.get(position).getQty()!=null) {
+                    count_view.delete(String.valueOf(filteredList.get(position).getQty()),
+                            String.valueOf(position));
+                    filteredList.remove(position);
+                }
+            }
+        });
 
     }
 

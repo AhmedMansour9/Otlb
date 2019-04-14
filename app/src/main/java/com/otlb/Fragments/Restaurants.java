@@ -1,6 +1,7 @@
 package com.otlb.Fragments;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -10,24 +11,35 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.otlb.Activites.Navigation;
 import com.otlb.Adapter.Restaurants_Adapter;
 import com.otlb.Language;
+import com.otlb.Model.Offers_Details;
 import com.otlb.Presenter.GetRestaurants;
 import com.otlb.R;
 import com.otlb.View.RestaurantDetails_View;
 import com.otlb.View.Restaurants_View;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Restaurants extends Fragment implements RestaurantDetails_View,Restaurants_View,SwipeRefreshLayout.OnRefreshListener{
+public class Restaurants extends Fragment implements RestaurantDetails_View,Restaurants_View,
+        SwipeRefreshLayout.OnRefreshListener{
 
 
     public Restaurants() {
@@ -40,20 +52,36 @@ public class Restaurants extends Fragment implements RestaurantDetails_View,Rest
     GetRestaurants getUnits_presenter;
     String Typeid,Cityid,Stateid;
     String Lang;
+    EditText E_Search;
+    RelativeLayout Rela_Recycle,Rela_Filter;
+    Button Filter;
+    RelativeLayout Img_Rating,Img_AToZ,Img_MinOrder;
+    List<com.otlb.Model.Restaurants> restaurantsList=new ArrayList<>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view= inflater.inflate(R.layout.fragment_restaurants, container, false);
         Navigation();
-       init();
-       Language();
-       SwipRefresh();
-
+        init();
+        Language();
+        SwipRefresh();
+        RecycleviewSerach();
+        Sort_AToZ();
+        Sort_MinOrder();
+        Sort_Rating();
+        DisableRecycle();
         return view;
     }
 
     public void init(){
+        Filter=view.findViewById(R.id.filter);
+        Rela_Recycle=view.findViewById(R.id.Rela_One);
+        Rela_Filter=view.findViewById(R.id.Rela_Two);
+        Img_Rating=view.findViewById(R.id.Rela_Changepass);
+        Img_AToZ=view.findViewById(R.id.Rela_Atoz);
+        Img_MinOrder=view.findViewById(R.id.Rela_MinOrder);
+        E_Search=view.findViewById(R.id.E_Search);
         recyclerView=view.findViewById(R.id.recycler_Restaurants);
         getUnits_presenter=new GetRestaurants(getContext(),this);
         Bundle bundle=getArguments();
@@ -72,14 +100,20 @@ public class Restaurants extends Fragment implements RestaurantDetails_View,Rest
 
     @Override
     public void listRestaurants(List<com.otlb.Model.Restaurants> list) {
+        restaurantsList=list;
         mSwipeRefreshLayout.setRefreshing(false);
-        restaurants_adapter=new Restaurants_Adapter(list,getContext());
+        restaurants_adapter=new Restaurants_Adapter(restaurantsList,getContext());
         restaurants_adapter.setClickListener(this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(restaurants_adapter);
+
+    }
+
+    @Override
+    public void listRestaurantsOffers(List<Offers_Details> list) {
 
     }
 
@@ -157,5 +191,110 @@ public class Restaurants extends Fragment implements RestaurantDetails_View,Rest
     @Override
     public void AddtoCart(String id) {
 
+    }
+
+    public void RecycleviewSerach(){
+        E_Search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                restaurants_adapter.getFilter().filter(charSequence);
+                restaurants_adapter.notifyDataSetChanged();
+
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {
+            }
+        });
+    }
+
+
+    public void Sort_Rating(){
+        Img_Rating.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Rela_Recycle.setVisibility(View.VISIBLE);
+                Rela_Filter.setVisibility(View.GONE);
+//                Collections.sort(restaurantsList, new Comparator<com.otlb.Model.Restaurants>() {
+//
+//                    @Override
+//                    public int compare(com.otlb.Model.Restaurants restaurants, com.otlb.Model.Restaurants t1) {
+//                        char l = Character.toUpperCase(restaurants.getName().charAt(0));
+//
+//                        if (l < 'A' || l > 'Z')
+//
+//                            l += 'Z';
+//
+//                        char r = Character.toUpperCase(restaurants.getName().charAt(0));
+//
+//                        if (r < 'A' || r > 'Z')
+//
+//                            r += 'Z';
+//                        String s1 = l + restaurants.getName().substring(1);
+//                        String s2 = r + restaurants.getName().substring(1);
+//                        return s1.compareTo(s2);
+//                    }
+//                });
+
+
+            }
+        });
+
+
+    }
+    public void Sort_AToZ(){
+        Img_AToZ.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Rela_Recycle.setVisibility(View.VISIBLE);
+                Rela_Filter.setVisibility(View.GONE);
+
+
+
+            }
+        });
+
+
+    }
+    public void Sort_MinOrder(){
+        Img_MinOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Rela_Recycle.setVisibility(View.VISIBLE);
+                Rela_Filter.setVisibility(View.GONE);
+
+
+
+            }
+        });
+
+
+    }
+
+    public void DisableRecycle(){
+        Filter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            Rela_Recycle.setVisibility(View.GONE);
+            Rela_Filter.setVisibility(View.VISIBLE);
+
+
+            }
+        });
+
+
+    }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Navigation.Visablty=false;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        Navigation.Visablty=true;
     }
 }

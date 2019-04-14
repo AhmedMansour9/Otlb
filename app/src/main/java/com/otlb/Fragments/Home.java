@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -57,6 +58,7 @@ public class Home extends Fragment implements GetCities_View {
    GetCities_Presenter getCities_presenter;
    String Lang;
    Button btn_Search;
+   ImageView Img_Cart;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -78,7 +80,7 @@ public class Home extends Fragment implements GetCities_View {
         getTypes_presenter=new GetTypes_Presenter(getContext(),this);
         getCities_presenter.GetCities(Lang);
         getTypes_presenter.GetTypes(Lang);
-
+        Img_Cart=view.findViewById(R.id.Img_Cart);
 
         btn_Search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,6 +95,18 @@ public class Home extends Fragment implements GetCities_View {
                     getFragmentManager().beginTransaction().add(R.id.Home_Frame,detailsHomeProductFragment)
                             .addToBackStack(null).commit();
                 }
+            }
+        });
+
+        Img_Cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MyCart detailsHomeProductFragment=new MyCart();
+                Bundle bundle=new Bundle();
+                detailsHomeProductFragment.setArguments(bundle);
+                getFragmentManager().beginTransaction().add(R.id.Home_Frame,detailsHomeProductFragment)
+                        .addToBackStack(null).commit();
+
             }
         });
     }

@@ -68,7 +68,7 @@ public class Change_Profile_Presenter {
         Map<String, String> queryMap = new HashMap<>();
         queryMap.put("phone", user.getPhone());
         queryMap.put("firstName", user.getFirstName());
-        queryMap.put("lastName","a");
+        queryMap.put("lastName","alii");
         queryMap.put("email", user.getEmail());
         queryMap.put("address", user.getAddress());
 
@@ -78,7 +78,7 @@ public class Change_Profile_Presenter {
             @Override
             public void onResponse(Call<ChangeProfile_Response> call, Response<ChangeProfile_Response> response) {
                  if(response.code()==200){
-                        loginvieew.PasswordUpdted();
+                        loginvieew.ProfileUpdated(response.body().getData());
                 }else {
 
                  loginvieew.showError();

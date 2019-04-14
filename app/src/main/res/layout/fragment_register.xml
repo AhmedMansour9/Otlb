@@ -143,6 +143,9 @@
                     android:layout_height="wrap_content"
                     android:paddingRight="@dimen/_10sdp"
                     android:inputType="text"
+                    android:maxLines="1"
+                    android:maxLength="60"
+                    android:backgroundTint="#c2c2c2"
                     android:digits="ض ص ث ق ف غ ع ه خ ح ج د ط ك ن ت ا ل ب ي س ش ئ ء ؤ ر لا ى ةذ ظ ز وabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:textColor="#000"
                     />
@@ -167,8 +170,8 @@
                     android:inputType="number"
                     android:textColor="#000"
                     android:maxLength="10"
+                    android:backgroundTint="#c2c2c2"
                     android:ems="10">
-                    <requestFocus />
 
                 </EditText>
             </android.support.design.widget.TextInputLayout>
@@ -190,6 +193,9 @@
                     android:paddingRight="@dimen/_10sdp"
                     android:inputType="text"
                     android:textColor="#000"
+                    android:maxLines="1"
+                    android:maxLength="80"
+                    android:backgroundTint="#c2c2c2"
                     />
             </android.support.design.widget.TextInputLayout>
 
@@ -211,6 +217,9 @@
                     android:paddingRight="@dimen/_10sdp"
                     android:inputType="textEmailAddress"
                     android:textColor="#000"
+                    android:maxLines="1"
+                    android:maxLength="60"
+                    android:backgroundTint="#c2c2c2"
                     />
             </android.support.design.widget.TextInputLayout>
 
@@ -222,6 +231,7 @@
                 android:layout_marginRight="@dimen/_13sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:hint="@string/password"
+                app:passwordToggleEnabled="true"
                 android:layout_below="@+id/login_text_email_input_layout">
 
 
@@ -232,22 +242,48 @@
                     android:paddingRight="@dimen/_10sdp"
                     android:inputType="textPassword"
                     android:textColor="#000"
+                    android:maxLines="1"
+                    android:maxLength="30"
+                    android:backgroundTint="#c2c2c2"
                     />
             </android.support.design.widget.TextInputLayout>
 
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/login_text_confirmpassword_input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_13sdp"
+                android:layout_marginRight="@dimen/_13sdp"
+                app:passwordToggleEnabled="true"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:hint="@string/confirmpass"
+                android:layout_below="@+id/login_text_password_input_layout">
 
+
+                <EditText
+                    android:id="@+id/login_Confirmpassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="@dimen/_10sdp"
+                    android:inputType="textPassword"
+                    android:textColor="#000"
+                    android:maxLines="1"
+                    android:maxLength="30"
+                    android:backgroundTint="#c2c2c2"
+                    />
+            </android.support.design.widget.TextInputLayout>
 
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_35sdp"
-                android:layout_below="@+id/login_text_password_input_layout"
+                android:layout_below="@+id/login_text_confirmpassword_input_layout"
                 android:layout_marginLeft="@dimen/_20sdp"
                 android:layout_marginRight="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_50sdp"
                 android:layout_marginBottom="@dimen/_20sdp"
                 android:background="@drawable/bc_btnlogin"
-                android:text="@string/signin"
+                android:text="@string/signup"
                 android:textColor="#ffffff"
                 android:textStyle="bold"
                 android:id="@+id/btn_siginin"
